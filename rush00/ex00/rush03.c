@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void	ft_putchar(char    c);
 
 void	repeat_char(char	c, int	time)
@@ -12,33 +14,36 @@ void	repeat_char(char	c, int	time)
 	}
 }
 
-void	rush(int  x, int  y)
+void	rush(int x, int y)
 {
 	int i;
 
 	i = 0; //Current line location
 	while (i < y)
 	{
-		char	edge_char;
+		char	left_char;
 		char	mid_char;
+		char	right_char;
 
 		// First and last line
 		if (i == 0 || i == y -1)
 		{
-			edge_char = 'o';
-			mid_char = '-';
+			left_char = 'A';
+			mid_char = 'B';
+			right_char = 'C';
 		}
 		else
 		{
-			edge_char = '|';
+			left_char = 'B';
 			mid_char = ' ';
+			right_char = 'B';
 		}
 
-		ft_putchar(edge_char);
+		ft_putchar(left_char);
 		repeat_char(mid_char, x -2);
 		if (x != 1)
 		{
-			ft_putchar(edge_char);
+			ft_putchar(right_char);
 		}
 		ft_putchar('\n');
 
