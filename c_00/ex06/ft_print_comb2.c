@@ -16,40 +16,26 @@ void	ft_putchar(char	c)
 	write(1, &c, 1);
 }
 
-void	ft_print_comb(void)
+void	ft_print_comb2(void)
 {
-	int	x, y, z;
+	int	a, b, c, d;
 
-	x = '0';
-	y = '1';
-	z = '2';
+	a = '0';
+	b = '0';
+	c = '0';
+	d = '1';
 
-	while (x <= '9')
-	{
-		while (y <= '9')
-		{
-			while (z <= '9')
-			{
-				if (x < y && y < z)
-				{
-					ft_putchar(x);
-					ft_putchar(y);
-					ft_putchar(z);
-					ft_putchar(',');
-					ft_putchar(' ');
-				}
-				z ++;
-			}
-			y ++;
-			z = '2';
-		}
-		x ++;
-		y = '1';
-	}
+	ft_putchar(a);
+	ft_putchar(b);
+	ft_putchar(' ');
+	ft_putchar(c);
+	ft_putchar(d);
+	ft_putchar(',');
+	ft_putchar(' ');
 }
 
 int	main(void)
 {
-	ft_print_comb();
+	ft_print_comb2();
 	return(0);
 }
