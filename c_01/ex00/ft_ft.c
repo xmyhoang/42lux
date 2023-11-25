@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 14:18:25 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/23 14:18:33 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/23 17:25:21 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/23 17:26:30 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-void	ft_print_reverse_alphabet(void)
-{
-	int	i;
+//#include <stdio.h>
 
-	i = 'z' ;
-	while (i >= 'a') 
-	{
-		write(1, &i, 1);
-		i -= 1;
-	}
+void	ft_ft(int *nbr)
+{
+	*nbr = 42;
 }
 
-int	main(void)
+/*int	main(void)
 {
-	ft_print_reverse_alphabet();
-	return (0);
-}
+	int *nbr;
+	int	number;
+
+	nbr = &number;
+	ft_ft(nbr);
+	printf("%d", number);
+}*/

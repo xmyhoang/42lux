@@ -1,16 +1,24 @@
-// Needed to run write()
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/23 14:18:25 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/23 14:18:33 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Declare function
-void ft_putchar(char c);
+void	ft_putchar(char	c)
+	{
+		write(1, &c, 1);
+	}
 
-// Call function
-int main() {
-    ft_putchar('a');
-    return 0;
+int	main(void)
+{
+	ft_putchar('a');
+	return (0);
 }
-
-// Define function
-void ft_putchar(char c) {
-    write(1, &c, 1);
-};

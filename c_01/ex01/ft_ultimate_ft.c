@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 14:18:25 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/23 14:18:33 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/24 11:11:46 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/24 11:15:42 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-void	ft_print_reverse_alphabet(void)
+void	ft_ultimate_ft(int *********nbr)
 {
-	int	i;
-
-	i = 'z' ;
-	while (i >= 'a') 
-	{
-		write(1, &i, 1);
-		i -= 1;
-	}
-}
-
-int	main(void)
-{
-	ft_print_reverse_alphabet();
-	return (0);
+	*********nbr = 42;
 }
