@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 17:25:21 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/23 17:26:30 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/29 14:31:54 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/29 14:31:58 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void	ft_ft(int *nbr)
+
+int	ft_strlen(char *str)
 {
-	*nbr = 42;
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
 /*
 #include <stdio.h>
 int	main(void)
 {
-	int *nbr;
-	int	number;
-
-	nbr = &number;
-	ft_ft(nbr);
-	printf("%d", number);
-}*/
+	printf("%d", ft_strlen("HELLOdfhshs"));
+	return (0);
+}
+*/

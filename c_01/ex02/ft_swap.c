@@ -9,8 +9,6 @@
 /*   Updated: 2023/11/24 11:29:37 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-
 void	ft_swap(int *a, int *b)
 {
 	int	*temp;
@@ -20,6 +18,8 @@ void	ft_swap(int *a, int *b)
 	*b = *temp;
 }
 
+/*
+#include <stdio.h>
 int	main(void)
 {
 	int	num1;
@@ -31,3 +31,4 @@ int	main(void)
 	printf("%d\n", num1);
 	printf("%d\n", num2);
 }
+*/

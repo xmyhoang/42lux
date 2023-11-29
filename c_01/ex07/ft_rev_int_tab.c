@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 17:25:21 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/23 17:26:30 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/29 14:32:11 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/29 14:32:17 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void	ft_ft(int *nbr)
+
+void	ft_rev_int_tab(int *tab, int size)
 {
-	*nbr = 42;
+	int	a;
+	int	b;
+	int	temp;
+
+	a = 0;
+	b = size - 1;
+	while (a < b)
+	{
+		temp = tab[a];
+		tab[a] = tab[b];
+		tab[b] = temp;
+		a ++;
+		b --;
+	}
 }
 
 /*
 #include <stdio.h>
 int	main(void)
 {
-	int *nbr;
-	int	number;
+	int	arr[] = {1,2,3,4,5};
+	ft_rev_int_tab(arr, 5);
 
-	nbr = &number;
-	ft_ft(nbr);
-	printf("%d", number);
-}*/
+   for(int loop = 0; loop < 5; loop++)
+		printf("%d ", arr[loop]);
+}
+*/
