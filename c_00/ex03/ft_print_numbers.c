@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 void	print_number_as_char(char c)
 {
 	write(1, &c, 1);
@@ -19,6 +20,7 @@ void	print_number_as_char(char c)
 void	ft_print_numbers(void)
 {
 	int	i;
+
 	i = 0;
 	while (i <= 9)
 	{
@@ -27,8 +29,10 @@ void	ft_print_numbers(void)
 	}
 }
 
+/*
 int	main(void)
 {
 	ft_print_numbers();
 	return (0);
 }
+*/

@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 13:32:26 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/28 13:32:38 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-#include <stdio.h>
 
 void	output_combn(int arr[], int n)
 {
-	// Iterate through the array and print
-	for (int i = 0; i < n; i++)
-	{
-		char	digit;
+	int	i;
+	int	digit;
 
+	i = 0;
+	while (i < n)
+	{
 		digit = arr[i] + '0';
 		write(1, &digit, 1);
+		i++;
 	}
-
-	// If not the end, print commas
 	if (arr[0] != 10 - n)
 	{
 		write(1, ", ", 2);
@@ -21,33 +32,39 @@ void	output_combn(int arr[], int n)
 
 void	generate_combn(int arr[], int index, int n)
 {
-	// If current index is equal to the combo size, output
+	int	start;
+	int	i;
+
 	if (index == n)
 	{
 		output_combn(arr, n);
 	}
-	int	start;
-
-	// Determine the starting point. Continue from the value after previous element in the array
-	start = (index == 0) ? 0 : arr[index - 1] + 1;
-
-	for (int i = start; i <= 9; i++)
+	if (index == 0)
 	{
-		// Set value for current index
+		start = 0;
+	}
+	else
+	{
+		start = arr[index - 1] + 1;
+	}
+	i = start;
+	while (i <= 9)
+	{
 		arr[index] = i;
-		// Recursive call with next index
 		generate_combn(arr, index + 1, n);
+		i++;
 	}
 }
 
 void	ft_print_combn(int n)
 {
-	int	arr[n];
+	int	arr[10];
+
 	generate_combn(arr, 0, n);
 }
 
 int	main(void)
 {
-	ft_print_combn(5);
+	ft_print_combn(4);
 	return (0);
 }
