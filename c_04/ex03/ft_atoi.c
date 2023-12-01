@@ -62,11 +62,12 @@ int	ft_atoi(char	*str)
 	new_int = ft_str_int(digits, int_len, positive_check);
 	return (new_int);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
 	printf("%d \n", ft_atoi(" ---+--+1234ab567"));
 	printf("%d \n", ft_atoi(" ---+--+1234"));
 	printf("%d \n", ft_atoi(" ---+---+-2147483648"));
+	printf("%d \n", ft_atoi(" --0123"));
 	return 0;
-}*/
+}
