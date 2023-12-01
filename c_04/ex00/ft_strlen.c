@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:28:29 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/24 12:37:34 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/29 14:31:54 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/29 14:31:58 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		write(1, &str[i], 1);
-		i ++;
+		i++;
 	}
+	return (i);
 }
 
-/*int	main(void)
+/*
+#include <stdio.h>
+int	main(void)
 {
-	ft_putstr("ysxfvgbhnjm");
+	printf("%d", ft_strlen("HELLOdfhshs"));
 	return (0);
-}*/
+}
+*/

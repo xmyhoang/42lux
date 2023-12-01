@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:28:29 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/24 12:37:34 by thihoang         ###   ########.fr       */
+/*   Created: 2023/11/28 13:32:07 by thihoang          #+#    #+#             */
+/*   Updated: 2023/11/28 13:32:11 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putnbr(int nb)
 {
-	int	i;
+	int	digit;
 
-	i = 0;
-	while (str[i] != '\0')
+	if (nb == -2147483648)
 	{
-		write(1, &str[i], 1);
-		i ++;
+		write(1, "-2", 2);
+		nb = 147483648;
 	}
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb / 10 != 0)
+	{
+		ft_putnbr(nb / 10);
+	}
+	digit = nb % 10 + '0';
+	write(1, &digit, 1);
 }
 
-/*int	main(void)
+/*
+int main(void)
 {
-	ft_putstr("ysxfvgbhnjm");
+	ft_putnbr(-2147483648);
 	return (0);
-}*/
+}
+*/
