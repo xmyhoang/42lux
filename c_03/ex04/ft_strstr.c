@@ -1,5 +1,7 @@
 char *ft_strstr(char *str, char *to_find)
 {
+	if (*str == '\0')
+		return (str);
 	while (*str != '\0')
 	{
 		while (*str == *to_find &&  *to_find != '\0')
