@@ -1,4 +1,16 @@
-int ft_is_prime(int nb)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/02 14:59:25 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/02 14:59:30 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_is_prime(int nb)
 {
 	int	i;
 
@@ -19,7 +31,7 @@ int ft_is_prime(int nb)
 	return (1);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {
 	printf("%d \n", ft_is_prime(7));
@@ -28,4 +40,4 @@ int main(void)
 	printf("%d \n", ft_is_prime(32));
 	printf("%d \n", ft_is_prime(11));
 	return 0;
-}
+}*/

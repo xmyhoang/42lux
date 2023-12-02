@@ -12,6 +12,9 @@
 
 char	*ft_strcpy(char *dest, char *src)
 {
+	char	*temp;
+
+	temp = dest;
 	while (*src != '\0')
 	{
 		*dest = *src;
@@ -19,18 +22,13 @@ char	*ft_strcpy(char *dest, char *src)
 		src ++;
 	}
 	*dest = '\0';
-	return (dest);
+	return (temp);
 }
-
-/*
-#include <stdio.h>
+/*#include <stdio.h>
 
 int main(void)
 {
 	char	dest[1000] = "";
-
-	ft_strcpy(dest, "Copy this line exceeding dest");
-	printf("%s", dest);
+	printf("%s", ft_strcpy(dest, "Copy this line exceeding dest"));
 	return (0);
-}
-*/
+}*/

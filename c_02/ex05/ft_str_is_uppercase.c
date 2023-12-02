@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	if (*str == '\0')
 	{
@@ -20,7 +20,7 @@ int	ft_str_is_alpha(char *str)
 	{
 		if (*str >= 'A' && *str <= 'Z')
 		{
-			str ++;
+			str++;
 		}
 		else
 			return (0);

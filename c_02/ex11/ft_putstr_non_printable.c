@@ -42,6 +42,7 @@ void	ft_putstr_non_printable(char *str)
 			ft_putchar('\\');
 			ft_putchar("0123456789abcdef"[str[i] / 16]);
 			ft_putchar("0123456789abcdef"[str[i] % 16]);
+			ft_putchar('\0');
 		}
 		i ++;
 	}
@@ -49,6 +50,6 @@ void	ft_putstr_non_printable(char *str)
 
 /*int main(void)
 {
-	ft_putstr_non_printable("Coucou\ntu vas bien ?\n123456");
+	ft_putstr_non_printable("Coucou\ntu vas bien ?\n12345\v6");
 	return 0;
 }*/

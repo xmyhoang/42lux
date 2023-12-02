@@ -1,4 +1,16 @@
-int ten_power(int	power)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/02 14:55:35 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/02 14:55:42 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ten_power(int power)
 {
 	int	result;
 
@@ -29,7 +41,7 @@ int	ft_str_int(int digits[], int int_len, int positive_check)
 	{
 		new_int = -new_int;
 	}
-	return(new_int);
+	return (new_int);
 }
 
 int	ft_atoi(char	*str)
@@ -54,14 +66,13 @@ int	ft_atoi(char	*str)
 			int_len ++;
 		}
 		else if (*str != ' ' || (*str <= 9 && *str >= 13))
-		{
-			break;
-		}
+			break ;
 		str ++;
 	}
 	new_int = ft_str_int(digits, int_len, positive_check);
 	return (new_int);
 }
+/*
 #include <stdio.h>
 int main(void)
 {
@@ -71,3 +82,4 @@ int main(void)
 	printf("%d \n", ft_atoi(" --0123"));
 	return 0;
 }
+*/

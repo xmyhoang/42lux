@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 17:56:37 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/29 17:56:42 by thihoang         ###   ########.fr       */
+/*   Created: 2023/12/01 20:40:22 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/01 20:40:25 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
+	char	*temp;
+
 	if (*str == '\0')
-	{
-		return (1);
-	}
+		return (str);
 	while (*str != '\0')
 	{
-		if (*str >= 'a' && *str <= 'z')
+		temp = str;
+		while (*str == *to_find && *to_find != '\0')
 		{
-			str ++;
+			str++;
+			to_find++;
 		}
-		else
-			return (0);
+		if (*to_find == '\0')
+		{
+			return (temp);
+		}
+		str ++;
 	}
-	return (1);
+	return (0);
 }
 /*
 #include <stdio.h>
-
 int main(void)
 {
-	printf("%d \n", ft_str_is_alpha("abc"));
-	printf("%d \n", ft_str_is_alpha("ABC"));
-	printf("%d \n", ft_str_is_alpha("Abc"));
-	printf("%d \n", ft_str_is_alpha("A12"));
-	printf("%d \n", ft_str_is_alpha("123"));
-	return (0);
-}
-*/
+	printf("%s \n", ft_strstr("123ABC", "123"));
+	printf("%s \n", ft_strstr("xyz123ABC456", "123ABC"));
+	printf("%s \n", ft_strstr("123ABCxyz", "123ABC"));
+	printf("%s \n", ft_strstr("123", "ABC"));
+	return 0;
+}*/
