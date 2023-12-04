@@ -32,7 +32,7 @@ char	*ft_strstr(char *str, char *to_find)
 	}
 	return (0);
 }
-/*
+
 #include <stdio.h>
 int main(void)
 {
@@ -41,4 +41,4 @@ int main(void)
 	printf("%s \n", ft_strstr("123ABCxyz", "123ABC"));
 	printf("%s \n", ft_strstr("123", "ABC"));
 	return 0;
-}*/
+}
