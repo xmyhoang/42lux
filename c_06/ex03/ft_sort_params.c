@@ -12,7 +12,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	ft_putchar(char	c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
@@ -29,7 +29,7 @@ void	ft_putstr(char	*str)
 void	ft_swap(char **a, char **b)
 {
 	char	*temp;
-	
+
 	temp = *a;
 	*a = *b;
 	*b = temp;
@@ -45,7 +45,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int	h;
 	int	i;
@@ -71,4 +71,3 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
-

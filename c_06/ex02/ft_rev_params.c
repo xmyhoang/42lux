@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char	c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])
 {
-	int	i;
+	int		i;
 	char	c;
 
 	i = 0;
@@ -36,4 +36,3 @@ int main(int argc, char const *argv[])
 	}
 	return (0);
 }
-

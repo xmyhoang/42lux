@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 int ft_ultimate_range(int **range, int min, int max)
 {
@@ -17,6 +18,14 @@ int ft_ultimate_range(int **range, int min, int max)
 		ints[i] = min + i;
 		i++;
 	}
+
+	/*int j;
+	j = 0;
+	while (j < max)
+	{
+		printf("%d\n", ints[j]);
+		j++;
+	}*/
 	return (max - min);
 }
 
