@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 11:17:16 by thihoang          #+#    #+#             */
-/*   Updated: 2023/11/24 11:29:37 by thihoang         ###   ########.fr       */
+/*   Created: 2023/12/01 20:39:33 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/01 20:39:36 by thihoang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void	ft_swap(int *a, int *b)
+
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	temp;
+	unsigned int	i;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	i = 0;
+	while ((s1[i] == s2[i]) && (s1[i] != '\0' || s2[i] != '\0'))
+		i ++;
+	return (s1[i] - s2[i]);
 }
-
 /*
 #include <stdio.h>
 int	main(void)
 {
-	int	num1;
-	int	num2;
-
-	num1 = 1;
-	num2 = 2;
-	ft_swap(&num1, &num2);
-	printf("%d\n", num1);
-	printf("%d\n", num2);
+	printf("%d \n", ft_strcmp("abc", "abc"));
+	printf("%d \n", ft_strcmp("abc", "abx"));
+	printf("%d \n", ft_strcmp("abc", "12a"));
 }
 */
