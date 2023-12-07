@@ -6,21 +6,22 @@ int ft_ultimate_range(int **range, int min, int max)
 	int	i;
 
 	i = 0;
-	ints = (int *)malloc((max - min) * sizeof(int));
+	ints = (int *)malloc((max - min + 1) * sizeof(int));
 	if (min >= max)
 	{
 		*range = NULL;
 		return (0);
 	}
-	while (i < max - min)
+	while (i < max - min + 1)
 	{
 		ints[i] = min + i;
 		i++;
 	}
-	return (max - min);
+	*range = ints;
+	return (max - min + 1);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int main(void)
 {
@@ -30,7 +31,7 @@ int main(void)
 
 	i = 0;
 	size = ft_ultimate_range(&ints, 1, 5);
-	printf("%d\n", size);
+	printf("SIZE: %d\n", size);
 	while (i < size)
 	{
 		printf("%d\n", ints[i]);
@@ -38,4 +39,4 @@ int main(void)
 	}
 	free(ints);
 	return 0;
-}
+}*/
