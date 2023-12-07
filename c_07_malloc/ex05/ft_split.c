@@ -101,7 +101,7 @@ char **ft_split(char *str, char *charset)
 	return (split);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {
 	char *str = "HA DS$KF H$A$SFD#S#";
@@ -114,4 +114,4 @@ int main(void)
 	}
 	free(result);
 	return 0;
-}
+}*/
