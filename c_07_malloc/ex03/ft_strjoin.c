@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 19:11:19 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/08 19:11:21 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_strlen(char	*strs)
 {
 	int	i;
-	
+
 	i = 0;
 	while (strs[i] != '\0')
 		i ++;
@@ -23,13 +35,13 @@ int	ft_final_len(int size, char **strs, char *sep)
 		i ++;
 	}
 	final_len += (size - 1) * ft_strlen(sep);
-	return(final_len);
+	return (final_len);
 }
 
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
-	
+
 	i = 0;
 	while (src[i] != '\0')
 	{
@@ -47,17 +59,16 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		final_len;
 	char	*cat_str;
 	char	*final_str;
-	//char	*current_str;
 
 	if (size <= 0)
 	{
-		return((char *)malloc(sizeof(char)));
+		return ((char *)malloc(sizeof(char)));
 	}
 	final_len = ft_final_len(size, strs, sep);
 	final_str = (char *)malloc((final_len + 1) * sizeof(char));
 	cat_str = final_str;
 	if (!cat_str)
-    	return (0);
+		return (0);
 	i = 0;
 	cat_i = 0;
 	while (i < size)
@@ -67,7 +78,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		if (i < size - 1)
 		{
 			ft_strcpy(cat_str + cat_i, sep);
-			cat_str += ft_strlen(sep);	
+			cat_str += ft_strlen(sep);
 		}
 		i++;
 	}

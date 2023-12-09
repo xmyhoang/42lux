@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 19:11:33 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/08 19:11:38 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_strlen(char *str)
@@ -13,7 +25,7 @@ int	ft_strlen(char *str)
 int	is_charset(char c, char *charset)
 {
 	int	i;
-	
+
 	i = 0;
 	while (charset[i] != '\0')
 	{
@@ -60,7 +72,7 @@ char	*ft_strncpy(char *dest, char *src, int n)
 	return (dest);
 }
 
-char **ft_split(char *str, char *charset)
+char	**ft_split(char *str, char *charset)
 {
 	char	**split;
 	int		split_len;
