@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thihoang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/09 15:21:03 by thihoang          #+#    #+#             */
+/*   Updated: 2023/12/09 15:21:06 by thihoang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "ft_stock_str.h"
 
@@ -27,16 +39,14 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-struct s_stock_str *ft_strs_to_tab(int ac, char **av)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	int					i;
-	struct	s_stock_str *array;
+	struct s_stock_str	*array;
 
 	array = malloc((ac + 1) * sizeof(struct s_stock_str));
 	if (!array)
-	{
 		return (0);
-	}
 	i = 0;
 	while (i < ac)
 	{

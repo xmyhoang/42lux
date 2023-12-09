@@ -21,7 +21,7 @@ int	whitespace_sign(char *str, int *ptr_i)
 
 	i = 0;
 	count = 1;
-	while (str[i] >= 9 && str[i] <= 13)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while (str[i] && (str[i] == '-' || str[i] == '+'))
 	{
@@ -32,7 +32,31 @@ int	whitespace_sign(char *str, int *ptr_i)
 		i++;		
 	}
 	*ptr_i = i;
+
+	printf("str[i] 's i INSIDE whitespace func is %d\n", i);
+
 	return (count);
+}
+
+int	validate_base(char	*base)
+{
+	int	i;
+
+	i = 0;
+	while(base[i])
+	{
+		if ((base[i] >= 9 && base[i] <= 13) || base[i] == ' ' || base[i] == '-' || base[i] == '+')
+		{
+			return(0);
+		}
+		if (base[i] == base[i + 1])
+			return (0);
+		i++;
+	}
+
+	printf("Base validation PASSED\n");
+
+	return (1);
 }
 
 int	find_base_index(char digit, char *base)
@@ -73,7 +97,13 @@ int	ft_atoi_base(char *str, char *base)
 
 		while (str[i])
 		{
+
+			printf("str[i] 's i is%d \n", i);
+
 			negative_sign = whitespace_sign(str, &i);
+
+			printf("str[i] 's i AFTER whitespace func is %d\n", i);
+
 			base_index = find_base_index(str[i], base);
 			while (base_index != -1)
 			{
@@ -91,19 +121,19 @@ int	ft_atoi_base(char *str, char *base)
 	
 }
 
-/*char *ft_convert_base(char *nbr, char *base_from, char *base_to)
+char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	validate_base(base_from);
-
-	validate_base(base_to);
-
-	ft_atoi_base(nbr, base_to);
-}*/
+	if (validate_base(base_from) == 0 || validate_base(base_to) == 0)
+	{
+		return (0);
+	}
+	ft_atoi_base(nbr, base_from);
+}
 
 #include <stdio.h>
 int main(void)
 {
 	//printf("%s\n", ft_convert_base(" +--123a456", 10, 2));
-	printf("%d\n", ft_atoi_base("--478abca", "0123456789a"));
+	printf("%d\n", ft_atoi_base("  ---101478abca", "01"));
 	return 0;
 }
