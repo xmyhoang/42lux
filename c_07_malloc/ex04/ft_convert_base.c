@@ -36,6 +36,7 @@ int	whitespace_sign(char *str, int *ptr_i)
 int	validate_base(char	*base)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while(base[i])
@@ -44,8 +45,14 @@ int	validate_base(char	*base)
 		{
 			return(0);
 		}
-		if (base[i] == base[i + 1])
-			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		
 		i++;
 	}
 	return (1);
