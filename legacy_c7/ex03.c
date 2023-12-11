@@ -52,46 +52,40 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strcat(char *cat_str, int size, char **strs, char *sep)
-{
-	int		c;
-	int		i;
-
-	c = 0;
-	i = 0;
-	while (c < size)
-	{	
-		ft_strcpy(cat_str, strs[c]);
-		cat_str += ft_strlen(strs[c]);
-		if (c < size - 1)
-		{
-			ft_strcpy(cat_str + i, sep);
-			cat_str += ft_strlen(sep);
-		}
-		c++;
-	}
-	*cat_str = '\0';
-	return (cat_str - c);
-}
-
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
+	int		cat_i;
+	int		i;
 	int		final_len;
-	char	*final_str;
 	char	*cat_str;
+	char	*final_str;
 
 	if (size <= 0)
+	{
 		return ((char *)malloc(sizeof(char)));
+	}
 	final_len = ft_final_len(size, strs, sep);
 	final_str = (char *)malloc((final_len + 1) * sizeof(char));
 	cat_str = final_str;
 	if (!cat_str)
 		return (0);
-	cat_str = ft_strcat(cat_str, size, strs, sep);
+	i = 0;
+	cat_i = 0;
+	while (i < size)
+	{	
+		ft_strcpy(cat_str, strs[i]);
+		cat_str += ft_strlen(strs[i]);
+		if (i < size - 1)
+		{
+			ft_strcpy(cat_str + cat_i, sep);
+			cat_str += ft_strlen(sep);
+		}
+		i++;
+	}
 	return (final_str);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {	
 	int		size;
@@ -104,8 +98,8 @@ int main(void)
 	strs[0] = "STR1";
 	strs[1] = "STR2";
 	strs[2] = "STR3";
-	sep = "<<<<>>>>";
+	sep = "++";
 	printf("RESULT:\n%s\n", result = ft_strjoin(size, strs, sep));
 	free(result);
 	return(0);
-}
+}*/

@@ -12,6 +12,16 @@
 
 #include <stdlib.h>
 
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
 int	is_charset(char c, char *charset)
 {
 	int	i;
@@ -28,22 +38,20 @@ int	is_charset(char c, char *charset)
 	return (0);
 }
 
-int	ft_strlen_sep(char *str, char *charset)
+int	count_charset(char *str, char *charset)
 {
 	int	i;
-	int	count;
+	int	found_qty;
 
 	i = 0;
-	count = 0;
+	found_qty = 0;
 	while (str[i] != '\0')
 	{
-		if (!is_charset(str[i], charset))
-		{
-			count++;
-		}
+		if (is_charset(str[i], charset))
+			found_qty++;
 		i++;
 	}
-	return (count);
+	return (found_qty);
 }
 
 char	*ft_strncpy(char *dest, char *src, int n)
@@ -64,55 +72,57 @@ char	*ft_strncpy(char *dest, char *src, int n)
 	return (dest);
 }
 
-char	**split_copy_words(char *str, char *charset, char **result)
+char	**ft_split(char *str, char *charset)
 {
-	int	s;
-	int	i;
-	int	word_start;
+	char	**result;
+	int		result_len;
+	int		word_len;
+	int		s;
+	int		i;
+	int		word_start;
+
+	result_len = ft_strlen(str) - count_charset(str, charset) + 1;
+	result = (char **)malloc(result_len * sizeof(char *));
+	if (!result)
+		return (0);
 
 	s = 0;
 	i = 0;
 	word_start = 0;
 	while (str[s] != '\0')
 	{
-		if (is_charset(str[s], charset))
+		if (is_charset(str[s], charset) == 0)
 		{
-			result[i] = (char *)malloc((s + 1) * sizeof(char));
+			word_len = s - word_start + 1;
+			result[i] = (char *)malloc(word_len * sizeof(char));
 			if (!result[i])
 				return (0);
-			ft_strncpy(result[i], &str[word_start], s - word_start);
-			result[i][s - word_start + 1] = '\0';
-			word_start = s + 1;
-			i ++;
+			ft_strncpy(result[i], &str[word_start], word_len);
+			result[i][word_len] = '\0';
 		}
-		s++;
+		else
+		{
+			i++;
+			word_start = i + 1;
+		}
+		i++;
 	}
-	return (result);
-}
 
-char	**ft_split(char *str, char *charset)
-{
-	char	**result;
-	int		result_len;
-
-	result_len = ft_strlen_sep(str, charset);
-	result = (char **)malloc((result_len + 1) * sizeof(char *));
-	if (!result)
-		return (0);
-	result = split_copy_words(str, charset, result);
+	
 	return (result);
 }
 
 /*#include <stdio.h>
 int main(void)
 {
-	char *str = "HADS*KF H$A*SFD#S#";
-	char *charset = "$#*";
+	char *str = "HADS$KF H$A$SFD#S#";
+	char *charset = "$#";
 	char **result = ft_split(str, charset);
 	for (int i = 0; result[i]; i++)
 	{
 		printf("%s\n", result[i]);
 		free(result[i]);
 	}
+	free(result);
 	return 0;
 }*/
