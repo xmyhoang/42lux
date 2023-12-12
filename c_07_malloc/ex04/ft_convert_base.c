@@ -15,10 +15,23 @@
 int	ft_length(char *str);
 int	whitespace_sign(char *str, int *ptr_i);
 int	validate_base(char	*base);
-int is_null(void *ptr);
+int	is_null(void *ptr);
 int	is_empty_str(char *str);
 int	find_base_index(char digit, char *base);
-int	base_nb_len(int nb, int base_len);
+//int	base_nb_len(int nb, int base_len);
+
+int	base_nb_len(int nb, int base_len)
+{
+	int	i;
+
+	i = 0;
+	while (nb / base_len != 0)
+	{
+		nb /= base_len;
+		i++;
+	}
+	return (i + 1);
+}
 
 long	ft_atoi_base(char *str, char *base)
 {
@@ -88,7 +101,7 @@ char	*decimal_to_base(long nb, char *base)
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	long	decimal;
-	
+
 	if (is_empty_str(nbr)
 		|| validate_base(base_from) == 0
 		|| validate_base(base_to) == 0)
@@ -98,7 +111,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (nbr);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {
 	char *nbr = "   --+-2147483647";
@@ -108,4 +121,4 @@ int main(void)
 	//printf("%s to base int (decimal) : %ld\n", nbr, ft_atoi_base(nbr, base_from));
 	printf("Result: %s\n", ft_convert_base(nbr, base_from, base_to));
 	return 0;
-}
+}*/

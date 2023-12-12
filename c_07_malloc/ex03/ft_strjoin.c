@@ -47,7 +47,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	length = 0;
 	while (i < size)
-		length = ft_strlen(strs[i++]);
+		length += ft_strlen(strs[i++]);
 	length += (size - 1) * ft_strlen(sep);
 	if (size <= 0)
 		final = (char *)malloc(sizeof(char));
@@ -65,14 +65,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (final);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	char *final;
-	
+
 	final = ft_strjoin(argc, argv, "++");
 	printf("%s", final);
 	free(final);
 	return (0);
-}
+}*/

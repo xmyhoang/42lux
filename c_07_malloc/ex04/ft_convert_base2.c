@@ -65,7 +65,6 @@ int	validate_base(char	*base)
 
 	if (ft_length(base) < 2)
 		return (0);
-	
 	i = 0;
 	while (base[i])
 	{
@@ -100,17 +99,4 @@ int	find_base_index(char digit, char *base)
 		i++;
 	}
 	return (-1);
-}
-
-int	base_nb_len(int nb, int base_len)
-{
-	int	i;
-
-	i = 0;
-	while (nb / base_len != 0)
-	{
-		nb /= base_len;
-		i++;
-	}
-	return (i + 1);
 }

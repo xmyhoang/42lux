@@ -71,23 +71,21 @@ char	**split_copy_words(char *str, char *charset, char **result)
 	int	c;
 	int	i;
 	int	word_start;
-	int	word_len;
 
 	c = 0;
 	i = 0;
 	word_start = 0;
 	while (str[c] != '\0')
 	{
-		word_len = c - word_start;
-		if (is_charset(str[c], charset) 
+		if (is_charset(str[c], charset)
 			|| (str[c + 1] == '\0' && is_charset(str[c], charset)))
 		{
-			if (word_len > 0)
+			if (c - word_start > 0)
 			{
-				result[i] = (char *)malloc((word_len + 1) * sizeof(char));
+				result[i] = (char *)malloc((c - word_start + 1) * sizeof(char));
 				if (!result[i])
 					return (0);
-				ft_strncpy(result[i++], &str[word_start], word_len);
+				ft_strncpy(result[i++], &str[word_start], c - word_start);
 			}
 			word_start = c + 1;
 		}
@@ -113,8 +111,8 @@ char	**ft_split(char *str, char *charset)
 #include <stdio.h>
 int main(void)
 {
-	char *str = "ABC#*ABC ABC#ABC*";
-	char *charset = "#* ";
+	char *str = ",AAAAA,AAA,A,,,,AAA,A,,";
+	char *charset = ",";
 	char **result = ft_split(str, charset);
 	for (int i = 0; result[i]; i++)
 	{
