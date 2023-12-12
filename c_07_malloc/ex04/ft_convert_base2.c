@@ -20,6 +20,23 @@ int	ft_length(char *str)
 	return (i);
 }
 
+int	is_empty_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[0] == '\0')
+		return (1);
+	while (str[i])
+	{
+		if (str[i] != ' ' && (str[i] < 9 || str[i] > 13)
+			&& str[i] != '-' && str[i] != '+')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	whitespace_sign(char *str, int *ptr_i)
 {
 	int	i;
@@ -46,6 +63,9 @@ int	validate_base(char	*base)
 	int	i;
 	int	j;
 
+	if (ft_length(base) < 2)
+		return (0);
+	
 	i = 0;
 	while (base[i])
 	{

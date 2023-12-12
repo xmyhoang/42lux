@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 
+#include <stdio.h>
+
 int	is_charset(char c, char *charset)
 {
 	int	i;
@@ -69,24 +71,24 @@ char	**split_copy_words(char *str, char *charset, char **result)
 	int	s;
 	int	i;
 	int	word_start;
+	int	word_len;
 
 	s = 0;
 	i = 0;
 	word_start = 0;
 	while (str[s] != '\0')
 	{
-		if (is_charset(str[s], charset))
+		if (is_charset(str[s], charset) && (word_len = s - word_start))
 		{
-			result[i] = (char *)malloc((s + 1) * sizeof(char));
+			result[i] = (char *)malloc((word_len + 1) * sizeof(char));
 			if (!result[i])
 				return (0);
-			ft_strncpy(result[i], &str[word_start], s - word_start);
-			result[i][s - word_start + 1] = '\0';
+			ft_strncpy(result[i++], &str[word_start], word_len);
 			word_start = s + 1;
-			i ++;
 		}
 		s++;
 	}
+	result[i] = 0;
 	return (result);
 }
 
@@ -103,16 +105,21 @@ char	**ft_split(char *str, char *charset)
 	return (result);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
-	char *str = "HADS*KF H$A*SFD#S#";
+	char *str = "Hdas*KF H$#123*hk#S$";
 	char *charset = "$#*";
 	char **result = ft_split(str, charset);
 	for (int i = 0; result[i]; i++)
 	{
+		if (result[i][0] == '\0')
+			printf("Empty element found");
+		if (result[i] == 0)
+			printf("Last element reached");
+		
 		printf("%s\n", result[i]);
 		free(result[i]);
 	}
 	return 0;
-}*/
+}
