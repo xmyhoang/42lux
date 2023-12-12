@@ -68,25 +68,30 @@ char	*ft_strncpy(char *dest, char *src, int n)
 
 char	**split_copy_words(char *str, char *charset, char **result)
 {
-	int	s;
+	int	c;
 	int	i;
 	int	word_start;
 	int	word_len;
 
-	s = 0;
+	c = 0;
 	i = 0;
 	word_start = 0;
-	while (str[s] != '\0')
+	while (str[c] != '\0')
 	{
-		if (is_charset(str[s], charset) && (word_len = s - word_start))
+		word_len = c - word_start;
+		if (is_charset(str[c], charset) 
+			|| (str[c + 1] == '\0' && is_charset(str[c], charset)))
 		{
-			result[i] = (char *)malloc((word_len + 1) * sizeof(char));
-			if (!result[i])
-				return (0);
-			ft_strncpy(result[i++], &str[word_start], word_len);
-			word_start = s + 1;
+			if (word_len > 0)
+			{
+				result[i] = (char *)malloc((word_len + 1) * sizeof(char));
+				if (!result[i])
+					return (0);
+				ft_strncpy(result[i++], &str[word_start], word_len);
+			}
+			word_start = c + 1;
 		}
-		s++;
+		c++;
 	}
 	result[i] = 0;
 	return (result);
@@ -108,8 +113,8 @@ char	**ft_split(char *str, char *charset)
 #include <stdio.h>
 int main(void)
 {
-	char *str = "Hdas*KF H$#123*hk#S$";
-	char *charset = "$#*";
+	char *str = "ABC#*ABC ABC#ABC*";
+	char *charset = "#* ";
 	char **result = ft_split(str, charset);
 	for (int i = 0; result[i]; i++)
 	{

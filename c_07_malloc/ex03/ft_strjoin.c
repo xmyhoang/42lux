@@ -12,100 +12,67 @@
 
 #include <stdlib.h>
 
-int	ft_strlen(char	*strs)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != '\0')
-		i ++;
+	while (str[i])
+		i++;
 	return (i);
 }
 
-int	ft_final_len(int size, char **strs, char *sep)
-{
-	int	final_len;
-	int	i;
-
-	final_len = 0;
-	i = 0;
-	while (i < size)
-	{
-		final_len += ft_strlen(strs[i]);
-		i ++;
-	}
-	final_len += (size - 1) * ft_strlen(sep);
-	return (final_len);
-}
-
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
+	int	dest_len;
 
 	i = 0;
-	while (src[i] != '\0')
+	dest_len = ft_strlen(dest);
+	while (src[i])
 	{
-		dest[i] = src[i];
-		i ++;
+		dest[dest_len + i] = src[i];
+		i++;
 	}
-	dest[i] = '\0';
+	dest[dest_len + i] = '\0';
 	return (dest);
-}
-
-char	*ft_strcat(char *cat_str, int size, char **strs, char *sep)
-{
-	int		c;
-	int		i;
-
-	c = 0;
-	i = 0;
-	while (c < size)
-	{	
-		ft_strcpy(cat_str, strs[c]);
-		cat_str += ft_strlen(strs[c]);
-		if (c < size - 1)
-		{
-			ft_strcpy(cat_str + i, sep);
-			cat_str += ft_strlen(sep);
-		}
-		c++;
-	}
-	*cat_str = '\0';
-	return (cat_str - c);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		final_len;
-	char	*final_str;
-	char	*cat_str;
+	char	*final;
+	int		length;
+	int		i;
 
+	i = 0;
+	length = 0;
+	while (i < size)
+		length = ft_strlen(strs[i++]);
+	length += (size - 1) * ft_strlen(sep);
 	if (size <= 0)
-		return ((char *)malloc(sizeof(char)));
-	final_len = ft_final_len(size, strs, sep);
-	final_str = (char *)malloc((final_len + 1) * sizeof(char));
-	cat_str = final_str;
-	if (!cat_str)
-		return (0);
-	cat_str = ft_strcat(cat_str, size, strs, sep);
-	return (final_str);
+		final = (char *)malloc(sizeof(char));
+	else
+		final = (char *)malloc(length * sizeof(char));
+	final[0] = '\0';
+	i = 0;
+	while (i < size)
+	{
+		ft_strcat(final, strs[i]);
+		if (i < size - 1)
+			ft_strcat(final, sep);
+		i++;
+	}
+	return (final);
 }
 
 #include <stdio.h>
-int main(void)
-{	
-	int		size;
-	char	**strs;
-	char	*sep;
-	char	*result;
-	// INPUTS
-	size = 3;
-	strs = (char **)malloc(size * sizeof(char *));
-	strs[0] = "STR1";
-	strs[1] = "STR2";
-	strs[2] = "STR3";
-	sep = "<<<<>>>>";
-	printf("RESULT:\n%s\n", result = ft_strjoin(size, strs, sep));
-	free(result);
-	return(0);
+
+int	main(int argc, char **argv)
+{
+	char *final;
+	
+	final = ft_strjoin(argc, argv, "++");
+	printf("%s", final);
+	free(final);
+	return (0);
 }
