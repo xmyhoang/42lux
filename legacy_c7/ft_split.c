@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 
+#include <stdio.h>
+
 int	is_charset(char c, char *charset)
 {
 	int	i;
@@ -20,11 +22,11 @@ int	is_charset(char c, char *charset)
 	while (charset[i] != '\0')
 	{
 		if (c == charset[i])
+		{
 			return (1);
+		}
 		i++;
 	}
-	if (!charset)
-		return (1);
 	return (0);
 }
 
@@ -37,9 +39,10 @@ int	ft_strlen_sep(char *str, char *charset)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		if (!is_charset(str[i], charset)
-			&& is_charset(str[i + 1], charset))
+		if (!is_charset(str[i], charset))
+		{
 			count++;
+		}
 		i++;
 	}
 	return (count);
@@ -65,28 +68,30 @@ char	*ft_strncpy(char *dest, char *src, int n)
 
 char	**split_copy_words(char *str, char *charset, char **result)
 {
+	int	c;
 	int	i;
-	int	wlen;
-	int	substr;
+	int	word_start;
 
+	c = 0;
 	i = 0;
-	substr = 0;
-	while (str[i])
+	word_start = 0;
+	while (str[c] != '\0')
 	{
-		if (!is_charset(str[i], charset))
+		if (is_charset(str[c], charset)
+			|| (str[c + 1] == '\0' && is_charset(str[c], charset)))
 		{
-			wlen = 0;
-			while (!is_charset(str[i + wlen], charset))
-				wlen++;
-			result[substr] = (char *)malloc((wlen + 1) * sizeof(char));
-			if (!str[substr])
-				return (0);
-			ft_strncpy(result[substr], str + i, wlen);
-			substr++;
-			i += wlen;
+			if (c - word_start > 0)
+			{
+				result[i] = (char *)malloc((c - word_start + 1) * sizeof(char));
+				if (!result[i])
+					return (0);
+				ft_strncpy(result[i++], &str[word_start], c - word_start);
+			}
+			word_start = c + 1;
 		}
-		i++;
+		c++;
 	}
+	result[i] = 0;
 	return (result);
 }
 
@@ -99,12 +104,11 @@ char	**ft_split(char *str, char *charset)
 	result = (char **)malloc((result_len + 1) * sizeof(char *));
 	if (!result)
 		return (0);
-	result[result_len] = 0;
 	result = split_copy_words(str, charset, result);
 	return (result);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
 	char *str = ",AAAAA,AAA,A,,,,AAA,A,,";
@@ -114,9 +118,11 @@ int main(void)
 	{
 		if (result[i][0] == '\0')
 			printf("Empty element found");
+		if (result[i] == 0)
+			printf("Last element reached");
 		
 		printf("%s\n", result[i]);
 		free(result[i]);
 	}
 	return 0;
-}*/
+}
